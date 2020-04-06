@@ -1,0 +1,23 @@
+create table MP_FILE
+(
+    FILE_NO NUMBER,
+    BNO NUMBER NOT NULL,
+    ORG_FILE_NAME VARCHAR2(260) NOT NULL,
+    STORED_FILE_NAME VARCHAR2(36) NOT NULL,
+    FILE_SIZE NUMBER,
+    REGDATE DATE DEFAULT SYSDATE NOT NULL,
+    DEL_GB VARCHAR2(1) DEFAULT 'N' NOT NULL,
+    PRIMARY KEY(FILE_NO)
+);
+commit;
+
+create sequence SEQ_MP_FILE_NO
+start with 1
+increment by 1
+nomaxvalue nocache;
+
+commit;
+
+alter table MP_BOARD ADD(HIT NUMBER DEFAULT 0);
+
+commit; 
