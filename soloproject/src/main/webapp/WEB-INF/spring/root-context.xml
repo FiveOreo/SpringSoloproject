@@ -14,13 +14,13 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- 오라클 접속 -->
     <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
-        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
-        <property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521/bum"/>
-        <property name="username" value="MYDEV"/>
-        <property name="password" value="TIGER"/>
+        <property value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" name="driverClassName"/>
+        <property value="jdbc:log4jdbc:oracle:thin:@localhost:1521/XE" name="url"/>
+        <property value="MYDEV" name="username"/>
+        <property value="TIGER" name="password"/>
     </bean>
    
-    <!-- Mybatis 연동 -->
+    <!-- 마이바티스 연동 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
          <property name="dataSource" ref="dataSource"></property>
          <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
@@ -28,11 +28,8 @@
     </bean>
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
-    </bean>	
-    
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    	<property name="dataSource" ref="dataSource"></property>
     </bean>
+    
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
     <!-- 스캔 -->
