@@ -91,3 +91,4 @@
 		</div>
 	</body>
 </html>
+<jsp:include page="foot.jsp"/>

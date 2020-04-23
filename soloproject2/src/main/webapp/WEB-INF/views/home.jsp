@@ -37,7 +37,7 @@
 </script>
 <body>
 	<form name='homeForm' method="post" action="/member/login">
-		<c:if test="${member == null}">
+		<c:if test="${member == null}">	
 			<div>
 				<label for="userId"></label>
 				<input type="text" id="userId" name="userId">
@@ -65,3 +65,4 @@
 	</form>
 </body>
 </html>
+<jsp:include page="foot.jsp"/>
